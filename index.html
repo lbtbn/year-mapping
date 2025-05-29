@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Year Mapping Project</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f7f7;
+      padding: 50px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 40px;
+    }
+    .section {
+      display: none;
+      background: white;
+      margin: 20px auto;
+      max-width: 600px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: left;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    .emoji-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎞️ Year Mapping Project</h1>
+  <button onclick="showNext()">Roll next 📜</button>
+
+  <div id="section1" class="section">
+    <div class="emoji-title">🧭 1. Before the School Year Began</div>
+    <ul>
+      <li><strong>Location:</strong> Living and studying in Vietnam</li>
+      <li><strong>Academic Background:</strong> Already studied similar math content, had a solid foundation</li>
+      <li><strong>Feelings:</strong> Nervous and a bit anxious about studying in a new environment, especially due to language differences</li>
+    </ul>
+  </div>
+
+  <div id="section2" class="section">
+    <div class="emoji-title">📚 2. Experience During the School Year</div>
+    <ul>
+      <li><strong>Challenges:</strong> Studying in English made it difficult to understand assignments and solve problems; had to adjust to new learning style and environment</li>
+      <li><strong>Highlights:</strong> Made a friend, Trâm Anh, who studied together and supported each other. Learned to overcome challenges through persistence and friendship</li>
+    </ul>
+  </div>
+
+  <div id="section3" class="section">
+    <div class="emoji-title">🏸 3. School Activities</div>
+    <ul>
+      <li>Joined the badminton team → improved physical fitness and teamwork</li>
+      <li>Great opportunity to connect and integrate with new friends</li>
+    </ul>
+  </div>
+
+  <div id="section4" class="section">
+    <div class="emoji-title">📐 4. AP Pre-Calculus</div>
+    <ul>
+      <li><strong>Knowledge:</strong> Content felt familiar because it was already learned in Vietnam</li>
+      <li><strong>Difficulty:</strong> Understanding word problems in English was more challenging than the math itself</li>
+      <li><strong>Reflection:</strong> The subject was relatively easy and helped reinforce previous knowledge, boosting confidence</li>
+    </ul>
+  </div>
+
+  <script>
+    let current = 0;
+    function showNext() {
+      current++;
+      const section = document.getElementById('section' + current);
+      if (section) {
+        section.style.display = 'block';
+        if (current === 4) {
+          document.querySelector('button').disabled = true;
+          document.querySelector('button').textContent = '✅ All sections revealed';
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
