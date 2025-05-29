@@ -3,104 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Year Mapping Project</title>
+  <title>Year Mapping Roll</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f7f7f7;
-      padding: 50px;
-      text-align: center;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 100px;
     }
-    h1 {
-      margin-bottom: 40px;
+    .roll-container {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      background: #fff;
     }
-    .section {
-      display: none;
-      background: white;
-      margin: 20px auto;
-      max-width: 600px;
+    .roll-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: transform 0.6s ease-in-out;
+    }
+    .roll-item {
+      width: 100%;
+      height: 400px;
       padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: left;
-      animation: fadeIn 0.5s ease forwards;
+      box-sizing: border-box;
     }
-    .emoji-title {
-      font-size: 24px;
-      margin-bottom: 10px;
+    .roll-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .roll-item h3 {
+      margin: 10px 0 5px;
+    }
+    .roll-item p {
+      font-size: 14px;
+      color: #444;
     }
     button {
-      padding: 12px 24px;
-      font-size: 18px;
-      background: #4CAF50;
-      color: white;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #0077cc;
+      color: #fff;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s;
     }
     button:hover {
-      background: #45a049;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      background: #005fa3;
     }
   </style>
 </head>
 <body>
-
-  <h1>🎞️ Year Mapping Project</h1>
-  <button onclick="showNext()">Roll next 📜</button>
-
-  <div id="section1" class="section">
-    <div class="emoji-title">🧭 1. Before the School Year Began</div>
-    <ul>
-      <li><strong>Location:</strong> Living and studying in Vietnam</li>
-      <li><strong>Academic Background:</strong> Already studied similar math content, had a solid foundation</li>
-      <li><strong>Feelings:</strong> Nervous and a bit anxious about studying in a new environment, especially due to language differences</li>
-    </ul>
+  <div class="roll-container">
+    <div class="roll-content" id="rollContent">
+      <div class="roll-item">
+        <img src="https://i.imgur.com/hNVQUbD.jpg" alt="Before school">
+        <h3>1. Before the School Year</h3>
+        <p>📍 Living and studying in Vietnam.<br>🧠 Good math background.<br>😰 Nervous about studying in a new English-speaking environment.</p>
+      </div>
+      <div class="roll-item">
+        <img src="https://i.imgur.com/tZc1rmj.jpg" alt="School experience">
+        <h3>2. During the Year</h3>
+        <p>🚧 Struggled with English & adapting to new system.<br>🤝 Made a great friend – Trâm Anh.<br>💪 Learned perseverance through support.</p>
+      </div>
+      <div class="roll-item">
+        <img src="https://i.imgur.com/Vi0e2rJ.jpg" alt="Badminton activity">
+        <h3>3. School Activities</h3>
+        <p>🏸 Joined the badminton team.<br>💬 Great way to connect & make friends.<br>🧠 Built teamwork & fitness.</p>
+      </div>
+      <div class="roll-item">
+        <img src="https://i.imgur.com/Pa5DJrm.jpg" alt="AP PreCalc">
+        <h3>4. AP Pre-Calculus</h3>
+        <p>📘 Content was familiar from Vietnam.<br>📝 Language was the challenge, not the math.<br>✅ Easy class – boosted confidence.</p>
+      </div>
+    </div>
   </div>
-
-  <div id="section2" class="section">
-    <div class="emoji-title">📚 2. Experience During the School Year</div>
-    <ul>
-      <li><strong>Challenges:</strong> Studying in English made it difficult to understand assignments and solve problems; had to adjust to new learning style and environment</li>
-      <li><strong>Highlights:</strong> Made a friend, Trâm Anh, who studied together and supported each other. Learned to overcome challenges through persistence and friendship</li>
-    </ul>
-  </div>
-
-  <div id="section3" class="section">
-    <div class="emoji-title">🏸 3. School Activities</div>
-    <ul>
-      <li>Joined the badminton team → improved physical fitness and teamwork</li>
-      <li>Great opportunity to connect and integrate with new friends</li>
-    </ul>
-  </div>
-
-  <div id="section4" class="section">
-    <div class="emoji-title">📐 4. AP Pre-Calculus</div>
-    <ul>
-      <li><strong>Knowledge:</strong> Content felt familiar because it was already learned in Vietnam</li>
-      <li><strong>Difficulty:</strong> Understanding word problems in English was more challenging than the math itself</li>
-      <li><strong>Reflection:</strong> The subject was relatively easy and helped reinforce previous knowledge, boosting confidence</li>
-    </ul>
-  </div>
+  <button onclick="rollNext()">Roll Next</button>
 
   <script>
     let current = 0;
-    function showNext() {
-      current++;
-      const section = document.getElementById('section' + current);
-      if (section) {
-        section.style.display = 'block';
-        if (current === 4) {
-          document.querySelector('button').disabled = true;
-          document.querySelector('button').textContent = '✅ All sections revealed';
-        }
+    const total = 4;
+    const rollContent = document.getElementById('rollContent');
+
+    function rollNext() {
+      if (current < total - 1) {
+        current++;
+        rollContent.style.transform = `translateY(-${400 * current}px)`;
       }
     }
   </script>
-
 </body>
 </html>
